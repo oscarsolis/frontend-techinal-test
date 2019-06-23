@@ -6,6 +6,9 @@ export class Product {
   formattedPrice: string;
   quantity: number;
   sublevelId: number;
+  selected: boolean;
+  total: number;
+  totalProducts: number;
 
   constructor() { }
 

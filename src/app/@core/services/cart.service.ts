@@ -31,16 +31,35 @@ export class CartService {
    */
   removeProduct(productId: string): void {
     let products: Array<Product> = this.getProductsFromCart();
-    products = products.filter(product => product.id === productId);
+    products = products.filter(product => product.id !== productId);
     localStorage.setItem(PRODUCTS, JSON.stringify(products));
   }
 
   /**
    *
    */
-  addProducts(product:Product):void{
+  addProducts(product: Product): void {
     const products: Array<Product> = this.getProductsFromCart();
     products.push(product);
     localStorage.setItem(PRODUCTS, JSON.stringify(products));
+  }
+
+  /**
+   *
+   */
+  updateProduct(product: Product): void {
+    const products = this.getProductsFromCart();
+    const index: number = products.findIndex(_product => _product.id === product.id);
+    if (index !== -1) {
+      products[index] = product;
+      localStorage.setItem(PRODUCTS, JSON.stringify(products));
+    }
+  }
+
+  /**
+   *
+   */
+  clearCart(): void {
+    localStorage.removeItem(PRODUCTS);
   }
 }

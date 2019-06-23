@@ -1,0 +1,19 @@
+<li class="dropdown-item dropdown" *ngFor="let category of categories; let i=index"
+  [class.dropdown]="category?.sublevels">
+  <a class="dropdown-toggle" [id]="'dropdown' + i" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ category?.name }}
+  </a>
+  <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdown' + i">
+    <li class="dropdown-item" *ngFor="let sub of category?.sublevels; let j=index" [class.dropdown]="sub?.sublevels">
+      <!-- Si no tiene mas niveles -->
+      <a *ngIf="!sub?.sublevels" [routerLink]="[ 'categories/products', sub?.id ]">{{ sub?.name }}</a>
+
+      <!-- Si tiene niveles -->
+      <a class="dropdown-toggle" [id]="'dropdown' + i + j" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" *ngIf="sub?.sublevels">
+        {{ sub?.name }}
+      </a>
+      <app-navbar-dropdown [categories]="category?.sublevels"></app-navbar-dropdown>
+    </li>
+  </ul>
+</li>

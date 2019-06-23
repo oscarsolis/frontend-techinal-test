@@ -4,13 +4,16 @@
   </div>
   <img class="card-img-top" imageNotFound alt="Card image cap">
   <div class="card-body text-center">
-    <h5 class="card-title text-capitalize">
+    <div class="card-title text-capitalize" [innerHTML]="product?.name | highlight : keyToSearch">
       {{ product?.name }}
-    </h5>
+    </div>
     <p class="card-text">A: <strong> {{ product?.price }} </strong> </p>
     <p class="card-text">Cantidad en stock: <strong> {{ product?.quantity }} </strong> </p>
+    <span class="badge badge-pill badge-primary" *ngIf="product?.selected">
+      Agregada en el carrito
+    </span>
   </div>
-  <div class="card-body text-center" *ngIf="showButtonAdd">
+  <div class="card-body text-center" *ngIf="showButtonAdd && !product?.selected">
     <button class="btn btn-primary" [disabled]="!product?.available" (click)="addItem(product)">
       <i class="fa fa-shopping-cart"></i> Agregar al carrito
     </button>

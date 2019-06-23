@@ -8,7 +8,8 @@ import { ApplicationRoutingModule } from './application-routing.module';
 // components
 import {
   NavbarComponent,
-  FooterComponent
+  FooterComponent,
+  DropdownComponent
 } from './components';
 import { ApplicationComponent } from './application.component';
 
@@ -20,6 +21,7 @@ import { ApplicationComponent } from './application.component';
   declarations: [
     NavbarComponent,
     FooterComponent,
+    DropdownComponent,
     ApplicationComponent
   ]
 })

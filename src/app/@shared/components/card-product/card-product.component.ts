@@ -26,6 +26,9 @@ export class CardProductComponent {
   //
   @Input('showButtonAdd') showButtonAdd: boolean = true;
 
+  //
+  @Input('keyToSearch') keyToSearch = '';
+
   constructor(
     private _cartService: CartService,
     private _navbarService: NavbarService
@@ -35,6 +38,9 @@ export class CardProductComponent {
    *
    */
   addItem(product: Product): void {
+    product.selected = true;
+    product.totalProducts = 1;
+    product.total = product.getPrice();
     this._cartService.addProducts(product);
     this._navbarService.triggerUpdateCart();
   }

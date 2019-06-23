@@ -13,12 +13,18 @@ import { TIMEOUT_TIME_IN_SECONDS } from '@config/global';
 //
 import { Product } from '@models';
 
+//
+import { CartService } from '@core/services/cart.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(
+    private _http: HttpClient,
+    private _cartService: CartService
+  ) { }
 
   /**
    *
@@ -28,8 +34,16 @@ export class ProductsService {
       this._http.get(ENDPOINTS.products)
         .toPromise()
         .then((result: any) => {
-          const products: Array<any> = result.products
-            .filter(product => Number(product.sublevel_id) === Number(categoryId));
+          let products: Array<any> = result.products.filter(product => Number(product.sublevel_id) === Number(categoryId));
+          const productsInCart: Array<any> = this._cartService.getProductsFromCart();
+          products = products.map(product => {
+            product.selected = false;
+            const _product = productsInCart.find(p => p.id === product.id);
+            if (_product) {
+              product.selected = true;
+            }
+            return product;
+          });
           resolve(this.mapArray(products));
         })
         .catch(errror => reject(errror));
@@ -45,7 +59,7 @@ export class ProductsService {
         .toPromise()
         .then((result: any) => {
           let products: Array<any> = result.products.filter(product => product.available);
-          products = products.slice(0,10);
+          products = products.slice(0, 10);
 
           resolve(this.mapArray(products));
         })
@@ -58,7 +72,7 @@ export class ProductsService {
    */
   mapArray(array: Array<any>): Array<Product> {
     return array.map(product => {
-      product = Object.assign(product, { formattedPrice: product.price, sublevelId: product.sublevel_id });
+      product = Object.assign(product, { formattedPrice: product.price, sublevelId: product.sublevel_id, total: 0 });
       return Object.assign(new Product(), product);
     });
   }

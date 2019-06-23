@@ -18,7 +18,11 @@ import {
 import { NotFoundImageDirective } from './directives';
 
 // pipes
-import { SortProductsPipe } from './pipes';
+import {
+  HighlightPipe,
+  SortProductsPipe,
+  FilterProductsPipe
+} from './pipes';
 
 @NgModule({
   imports: [
@@ -35,7 +39,9 @@ import { SortProductsPipe } from './pipes';
     NotFoundImageDirective,
 
     // pipes
+    HighlightPipe,
     SortProductsPipe,
+    FilterProductsPipe
   ],
   exports: [
     // components
@@ -46,7 +52,9 @@ import { SortProductsPipe } from './pipes';
     NotFoundImageDirective,
 
     // pipes
+    HighlightPipe,
     SortProductsPipe,
+    FilterProductsPipe,
 
     // modules
     FormsModule,

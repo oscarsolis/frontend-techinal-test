@@ -52,9 +52,20 @@ export class ProductsByCategoryComponent {
     {
       key: 'available',
       direction: 1,
-      title: 'Indisponibles'
+      title: 'Agotado'
     }
   ];
+
+  //
+  filtersTerm = {
+    available: '',
+    price: {
+      max: 100000,
+      min: 0
+    },
+    quantity: 1,
+    key: ''
+  };
 
   //
   sort: any = {};
@@ -81,4 +92,5 @@ export class ProductsByCategoryComponent {
           .catch(error => { });
       });
   }
+
 }

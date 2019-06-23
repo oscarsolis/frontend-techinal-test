@@ -31,9 +31,33 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8 offset-md-2">
     <div class="flex">
-      <app-card-product *ngFor="let product of bestProducts" [product]="product" [showButtonAdd]="false"></app-card-product>
+      <app-card-product *ngFor="let product of bestProducts" [product]="product" [showButtonAdd]="false">
+      </app-card-product>
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="text-center m-10">Categorias</h3>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-12">
+    <h1>Angular 2 Recursive List</h1>
+    <ul>
+      <ng-template #recursiveList let-list>
+        <li *ngFor="let item of list">
+          {{item.title}}
+          <ul *ngIf="item.children.length > 0">
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+          </ul>
+        </li>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
+    </ul>
+  </div>
+</div> -->

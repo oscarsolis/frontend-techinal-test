@@ -8,18 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
           Categorias
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a [routerLink]="[ 'categories/products', category?.id ]" class="dropdown-item" *ngFor="let category of categories">
-            {{ category.name }}
-          </a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+          <app-navbar-dropdown [categories]="categories"></app-navbar-dropdown>
+        </ul>
       </li>
     </ul>
     <ul class="nav justify-content-end">
@@ -32,3 +27,37 @@
     </ul>
   </div>
 </nav>
+
+
+<!--
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Categorias
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown1">
+          <li class="dropdown-item dropdown" *ngFor="let category of categories; let i=index"
+            [class.dropdown]="category?.sublevels">
+            <a class="dropdown-toggle" [id]="'dropdown' + i" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              {{ category?.name }}
+            </a>
+            <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdown' + i">
+              <li class="dropdown-item" *ngFor="let sub of category?.sublevels; let j=index"
+                [class.dropdown]="sub?.sublevels">
+                <a class="dropdown-toggle" [id]="'dropdown' + i + j" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false" *ngIf="sub?.sublevels">
+                  {{ sub?.name }}
+                </a>
+                <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdown' + i + j">
+                  <li class="dropdown-item" href="#"><a>Action 2.1.1 A</a></li>
+                  <li class="dropdown-item" href="#"><a>Action 2.1.1 B</a></li>
+                  <li class="dropdown-item" href="#"><a>Action 2.1.1 C</a></li>
+                </ul>
+                <a *ngIf="!sub?.sublevels" [routerLink]="[ 'categories/products', sub?.id ]">{{ sub?.name }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+-->
