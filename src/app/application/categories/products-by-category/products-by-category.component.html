@@ -69,12 +69,12 @@
           <div class="card-body">
             <div class="form-group">
               <label for="priceMin">Desde</label>
-              <input type="text" class="form-control" id="priceMin" placeholder="$0.00"
+              <input type="text" class="form-control" id="priceMin" placeholder="$0.00" mask="0*.00"
                 [(ngModel)]="filtersTerm.price.min">
             </div>
             <div class="form-group">
               <label for="priceMax">Hasta</label>
-              <input type="text" class="form-control" id="priceMax" placeholder="$0.00"
+              <input type="text" class="form-control" id="priceMax" placeholder="$0.00" mask="0*.00"
                 [(ngModel)]="filtersTerm.price.max">
             </div>
           </div>
@@ -93,7 +93,7 @@
           <div class="card-body">
             <div class="form-group">
               <label for="quantity">Cantidad a comprar</label>
-              <input type="text" class="form-control" id="quantity" placeholder="Ingrese la minima cantidad comprar"
+              <input type="text" class="form-control" mask="0*" id="quantity" placeholder="Ingrese la minima cantidad comprar"
                 [(ngModel)]="filtersTerm.quantity">
             </div>
           </div>

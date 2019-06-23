@@ -1,27 +1,53 @@
-# FrontendTechnicalTest
+# Frontend Developer Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
+## Problema
 
-## Development server
+Tiendas “El Baratón” necesita un e-commerce para expandir sus servicios, para eso don Pepe (propietario de la tienda) ha provisto de los siguientes requerimientos:
+ * La tienda debe mostrar categorías las cuales están conformadas por subniveles, éstos subniveles a su vez pueden tener más subniveles anidados, se debe hacer un menú donde aparezcan categorías y subniveles de forma anidada. Ejemplo:
+ 
+      * Categoría licores
+   * subnivel vinos
+        * subnivel vinos tintos
+        * subnivel vinos blancos  
+        
+* Los productos tienen un identificador principal y un identificador de subnivel, esto quiere decir que un producto sólo debe ser mostrado en su subnivel correspondiente.
+* Los productos deben filtrarse por: disponibilidad, rango de precios, cantidad en stock.
+* Los productos deben poder ordenarse por precio, disponibilidad y cantidad.
+* Se debe crear un carrito de compras donde los usuarios puedan agregar, editar cantidad y eliminar un producto.
+* Los productos deben permanecer en el carrito si el usuario cierra y abre la página, solo deben ser borrados si el usuario realiza la compra.
+* Un subnivel final es aquel que no tiene más subniveles, en éste caso debe aparecer una caja de texto que permita realizar búsquedas de productos por nombre en dichos subniveles.
+* Además, el ecommerce debe ser responsive.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Tabla De Contenidos
+- [Descripción](#descripción)
+- [Requerimientos](#requeremientos)
+- [Instalación](#instalación)
+- [Dependencias](#dependencias)
+- [Autor](#autor)
 
-## Code scaffolding
+## Descripción
+Para la construcción de la prueba se uso como tecnológica angular en su versión 6.1.10, de igual manera se hizo uso de la herramienta angular cli en su versión 6.2.9 el cual nos permite gestionar y empaquetar nuestra aplicación web para subirla a un entorno de producción.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Requerimientos
+- Angular CLI 6.2.9
+- NodeJs >= 8
+- NPM
 
-## Build
+## Instalación
+Ejecute los siguientes comandos en su terminal
+```
+  npm install
+  ng serve -o
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Dependencias usadas
 
-## Running unit tests
+- [Angular Progressbar](https://github.com/MurhafSousli/ngx-progressbar)
+- [Font Awesome](https://fontawesome.com/v4.7.0/)
+- [SweetAlert](https://sweetalert2.github.io)
+- [Bootstrap](https://getbootstrap.com/)
+- [NgMask](https://github.com/JsDaddy/ngx-mask#readme)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Autor
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* **Oscar Solis Guzman (solisguzmanoscar@gmail.com)**

@@ -11,10 +11,14 @@ import { ProductsByCategoryComponent } from './products-by-category/products-by-
 // modules
 import { SharedModule } from '@shared';
 
+//
+import { NgxMaskModule } from 'ngx-mask'
+
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    NgxMaskModule.forRoot(),
     CategoriesRoutingModule
   ],
   declarations: [
