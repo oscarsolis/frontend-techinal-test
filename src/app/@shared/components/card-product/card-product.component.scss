@@ -1,0 +1,49 @@
+@import "mixins";
+@import "variables";
+
+:host {
+    .card {
+        // @include width-height(250px, 300px);
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: 0.2s linear;
+        background-color: $color-white;
+        margin: 10px 0px;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    @media only screen and (max-width: 900px) {
+        .row {
+            flex-wrap: wrap;
+        }
+    }
+
+    .ribbon-wrapper {
+        overflow: hidden;
+        @include width-height(85px, 88px);
+        @include absolute-top-left(-3px, -3px);
+
+        .ribbon {
+
+            font-weight: bold;
+            font-size: 9px;
+            text-align: center;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            padding: 7px 0;
+            @include relative-top-left(15px, -30px);
+            width: 120px;
+            background-color: $primary-color;
+            color: $color-white;
+        }
+    }
+
+}

@@ -1,0 +1,36 @@
+.bg-primary {
+    background-color: $primary-color;
+}
+
+.is-transparent {
+    background: transparent;
+    border: none;
+}
+
+.text-white {
+    color: $color-white;
+}
+
+.card {
+    background-color: $color-white;
+    border: none;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+}
+
+.flex {
+    @include flex-row(wrap);
+    @include flex-x(space-around);
+}
+
+.flex-end {
+    @include flex-row(wrap);
+    @include flex-x(flex-end);
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.pb-25 {
+  padding-bottom: 25px;
+}

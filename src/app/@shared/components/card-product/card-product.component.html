@@ -1,0 +1,18 @@
+<div class="card" style="width: 16rem;">
+  <div class="ribbon-wrapper" *ngIf="!product?.available">
+    <div class="ribbon">No Disponible</div>
+  </div>
+  <img class="card-img-top" imageNotFound alt="Card image cap">
+  <div class="card-body text-center">
+    <h5 class="card-title text-capitalize">
+      {{ product?.name }}
+    </h5>
+    <p class="card-text">A: <strong> {{ product?.price }} </strong> </p>
+    <p class="card-text">Cantidad en stock: <strong> {{ product?.quantity }} </strong> </p>
+  </div>
+  <div class="card-body text-center" *ngIf="showButtonAdd">
+    <button class="btn btn-primary" [disabled]="!product?.available" (click)="addItem(product)">
+      <i class="fa fa-shopping-cart"></i> Agregar al carrito
+    </button>
+  </div>
+</div>

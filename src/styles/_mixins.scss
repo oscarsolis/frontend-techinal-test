@@ -1,0 +1,157 @@
+@mixin flex-row($wrap:nowrap) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+}
+
+@mixin flex-column($wrap:nowrap) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+}
+
+@mixin inline-flex-column($wrap:nowrap) {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+}
+
+@mixin flex-x-y($x, $y) {
+    -webkit-box-pack: $x;
+    -ms-flex-pack: $x;
+    justify-content: $x;
+    -webkit-box-align: $y;
+    -ms-flex-align: $y;
+    align-items: $y;
+    -ms-flex-line-pack: $y;
+    align-content: $y;
+}
+
+@mixin flex-x($x) {
+    -webkit-box-pack: $x;
+    -ms-flex-pack: $x;
+    justify-content: $x;
+}
+
+@mixin flex-y($y) {
+    -ms-flex-line-pack: $y;
+    align-content: $y;
+    -webkit-box-align: $y;
+    -ms-flex-align: $y;
+    align-items: $y;
+}
+
+@mixin width-height($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin text-ellipsis() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin relative-top-left($top, $left) {
+    @include position(true, true, relative, $top, $left);
+}
+
+@mixin relative-top-right($top, $right) {
+    @include position(true, false, relative, $top, $right);
+}
+
+@mixin relative-bottom-left($top, $left) {
+    @include position(false, true, relative, $top, $left);
+}
+
+@mixin relative-bottom-right($top, $right) {
+    @include position(false, false, relative, $top, $right);
+}
+
+@mixin absolute-top-left($top, $left) {
+    @include position(true, true, absolute, $top, $left);
+}
+
+@mixin absolute-top-right($top, $right) {
+    @include position(true, false, absolute, $top, $right);
+}
+
+@mixin absolute-bottom-left($top, $left) {
+    @include position(false, true, absolute, $top, $left);
+}
+
+@mixin absolute-bottom-right($top, $right) {
+    @include position(false, false, absolute, $top, $right);
+}
+
+@mixin fixed-top-left($top, $left) {
+    @include position(true, true, fixed, $top, $left);
+}
+
+@mixin fixed-top-right($top, $right) {
+    @include position(true, false, fixed, $top, $right);
+}
+
+@mixin fixed-bottom-left($top, $left) {
+    @include position(false, true, fixed, $top, $left);
+}
+
+@mixin fixed-bottom-right($top, $right) {
+    @include position(false, false, fixed, $top, $right);
+}
+
+@mixin position($isTop, $isLeft, $position, $y, $x) {
+    position: $position !important;
+
+    @if $isTop {
+        top: $y;
+    }
+
+    @else {
+        bottom: $y;
+    }
+
+    @if $isLeft {
+        left: $x;
+    }
+
+    @else {
+        right: $x;
+    }
+}
+
+@mixin border-top-radius() {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+@mixin border-bottom-radius() {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+@mixin appearance-none() {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}

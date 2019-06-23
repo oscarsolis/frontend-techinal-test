@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Bulma SCSS */
+// @import "~bulma-scss/utilities/all";
+// @import "~bulma-scss/form/all";
+// @import "~bulma-scss/grid/columns";
+// @import "~bulma-scss/components/card";
+// @import "~bulma-scss/components/media";
+// @import "~bulma-scss/components/navbar";
+// @import "~bulma-scss/elements/button";
+// @import "~bulma-scss/layout/footer";
+// @import "~bulma-scss/grid/all";
+
+@import "theme";
+
+body {
+    margin: 0px;
+    background-color: #eee;
+}
+
+.main {
+    margin-top: 20px;
+}

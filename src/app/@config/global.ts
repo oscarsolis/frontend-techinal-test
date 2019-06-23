@@ -1,0 +1,1 @@
+export const TIMEOUT_TIME_IN_SECONDS: number = 200000000000000000;

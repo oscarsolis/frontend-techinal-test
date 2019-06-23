@@ -1,0 +1,17 @@
+<div class="row flex-end">
+  <div class="col-md-4 pull-rigth">
+    <div class="form-group">
+      <select class="form-control" [(ngModel)]="sort">
+        <option [ngValue]="term" *ngFor="let term of orderingTerms">{{ term.title }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="flex">
+      <app-card-product *ngFor="let product of products | sortProducts: sort?.key : sort?.direction" [product]="product"></app-card-product>
+    </div>
+  </div>
+</div>

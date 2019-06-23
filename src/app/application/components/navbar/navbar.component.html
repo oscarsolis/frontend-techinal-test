@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a [routerLink]="[ 'home' ]" class="navbar-brand">El Baratón</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Categorias
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a [routerLink]="[ 'categories/products', category?.id ]" class="dropdown-item" *ngFor="let category of categories">
+            {{ category.name }}
+          </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="[ 'shopping-cart' ]">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <span class="badge badge-danger" *ngIf="totalProducts > 0">{{ totalProducts }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

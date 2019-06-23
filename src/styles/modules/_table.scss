@@ -1,0 +1,79 @@
+.table-shopping {
+    >thead>tr>th {
+        font-size: 0.9em;
+        text-transform: uppercase;
+    }
+
+    >tbody>tr>td {
+        font-size: $font-paragraph;
+
+        b {
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+
+    .td-name {
+        font-weight: $font-weight-default;
+        font-size: 1.5em;
+
+        small {
+
+            font-size: 0.75em;
+            font-weight: $font-weight-light;
+        }
+    }
+
+    .td-number {
+        font-weight: $font-weight-light;
+        font-size: $font-size-h4;
+    }
+
+    .td-name {
+        min-width: 200px;
+
+        a {
+            color: $color-black;
+
+            &:hover,
+            &:focus {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .td-number {
+        text-align: right;
+        min-width: 145px;
+
+        small {
+            margin-right: 3px;
+        }
+    }
+
+    .img-container {
+        width: 120px;
+        max-height: 160px;
+        overflow: hidden;
+        display: block;
+
+        img {
+            width: 100%;
+        }
+    }
+
+
+    .td-total {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-h5;
+        padding-top: 14px;
+        text-align: right;
+    }
+
+    .td-price {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-h5;
+        padding-top: 16px;
+        text-align: right;
+    }
+}

@@ -1,0 +1,65 @@
+// core
+import { Injectable } from '@angular/core';
+
+//
+import { HttpClient } from '@angular/common/http';
+
+//
+import { ENDPOINTS } from '@config/endpoints';
+
+//
+import { TIMEOUT_TIME_IN_SECONDS } from '@config/global';
+
+//
+import { Product } from '@models';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductsService {
+
+  constructor(private _http: HttpClient) { }
+
+  /**
+   *
+   */
+  getProductsByCategory(categoryId: number): Promise<Array<Product>> {
+    return new Promise((resolve, reject) => {
+      this._http.get(ENDPOINTS.products)
+        .toPromise()
+        .then((result: any) => {
+          const products: Array<any> = result.products
+            .filter(product => Number(product.sublevel_id) === Number(categoryId));
+          resolve(this.mapArray(products));
+        })
+        .catch(errror => reject(errror));
+    });
+  }
+
+  /**
+   *
+   */
+  getBestProducts(): Promise<Array<Product>> {
+    return new Promise((resolve, reject) => {
+      this._http.get(ENDPOINTS.products)
+        .toPromise()
+        .then((result: any) => {
+          let products: Array<any> = result.products.filter(product => product.available);
+          products = products.slice(0,10);
+
+          resolve(this.mapArray(products));
+        })
+        .catch(errror => reject(errror));
+    });
+  }
+
+  /**
+   *
+   */
+  mapArray(array: Array<any>): Array<Product> {
+    return array.map(product => {
+      product = Object.assign(product, { formattedPrice: product.price, sublevelId: product.sublevel_id });
+      return Object.assign(new Product(), product);
+    });
+  }
+}

@@ -1,0 +1,17 @@
+$primary-color: #ff5d46;
+$color-white: #FFFFFF;
+$color-red: #FF0000;
+$color-black: #000000;
+$font-size-base: 14px !default;
+$font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
+$font-size-h1: 3.8em !default;
+$font-size-h2: 2.6em !default;
+$font-size-h3: 1.825em !default;
+$font-size-h4: 1.3em !default;
+$font-size-h5: 1.25em !default;
+$font-size-h6: 1em !default;
+$font-paragraph: 16px !default;
+$font-weight-light: 300 !default;
+$font-weight-default: 400 !default;
+$font-weight-bold: 500 !default;
