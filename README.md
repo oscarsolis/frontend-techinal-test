@@ -20,7 +20,7 @@ Tiendas “El Baratón” necesita un e-commerce para expandir sus servicios, p
 
 ## Tabla De Contenidos
 - [Descripción](#descripción)
-- [Requerimientos](#requeremientos)
+- [Requerimientos](#requerimientos)
 - [Instalación](#instalación)
 - [Dependencias](#dependencias)
 - [Autor](#autor)
@@ -40,7 +40,7 @@ Ejecute los siguientes comandos en su terminal
   ng serve -o
 ```
 
-## Dependencias usadas
+## Dependencias
 
 - [Angular Progressbar](https://github.com/MurhafSousli/ngx-progressbar)
 - [Font Awesome](https://fontawesome.com/v4.7.0/)
