@@ -29,15 +29,17 @@ Tiendas “El Baratón” necesita un e-commerce para expandir sus servicios, p
 Para la construcción de la prueba se uso como tecnológica angular en su versión 6.1.10, de igual manera se hizo uso de la herramienta angular cli en su versión 6.2.9 el cual nos permite gestionar y empaquetar nuestra aplicación web para subirla a un entorno de producción.
 
 ## Requerimientos
-- Angular CLI 6.2.9
 - NodeJs >= 8
-- NPM
 
 ## Instalación
 Ejecute los siguientes comandos en su terminal
 ```
   npm install
-  ng serve -o
+  // si tiene el CLI instalado globalmente,
+  ng serve -o 
+  // en caso contrario usar 
+  npm start
+
 ```
 
 ## Dependencias
