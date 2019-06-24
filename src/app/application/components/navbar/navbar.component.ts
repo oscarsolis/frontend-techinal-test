@@ -92,10 +92,11 @@ export class NavbarComponent implements OnInit {
             $el.next().addClass('show');
             if ($el[0]) {
               $el.next().css({ "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 });
+              e.preventDefault();
+              e.stopPropagation();
             }
           }
-          e.preventDefault();
-          e.stopPropagation();
+
         }
       });
 

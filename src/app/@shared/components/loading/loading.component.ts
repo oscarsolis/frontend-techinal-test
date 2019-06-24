@@ -6,11 +6,8 @@ import {
   EventEmitter
 } from '@angular/core';
 
-//
-import { MESSAGES } from '@config/messages';
-
 @Component({
-  selector: 'ifonda-loading',
+  selector: 'app-loading',
   template: `
 		<div class="loading-wrapper" *ngIf="showComponent">
       <div class="sk-cube-grid" *ngIf="!showError">
@@ -28,8 +25,8 @@ import { MESSAGES } from '@config/messages';
 					<i class="fa fa-frown-o fa-5x"></i>
 			</div>
       <p class="text-message">{{ message }}</p>
-      <button class="btn btn-danger btn-simple" *ngIf="showRetryButton" (click)="_retry()">
-          <i class="fa fa-refresh"></i> Intentar nuevamente
+      <button class="btn btn-primary" *ngIf="showRetryButton" (click)="_retry()">
+          Intentar nuevamente
       </button>
 		</div>
 	`,
@@ -48,7 +45,7 @@ export class LoadingComponent {
 
   //
   @Input('message')
-  message: string = MESSAGES.loadingMessage;
+  message: string = 'Cargando información, por favor espere...';
 
   //
   @Output()
@@ -60,7 +57,7 @@ export class LoadingComponent {
    *
    */
   showMessageError(
-    message: string = MESSAGES.unknownError,
+    message: string = 'Algo Salio mal!',
     showRetryButton: boolean = false
   ): void {
     this.showComponent = true;
@@ -76,7 +73,7 @@ export class LoadingComponent {
     this.showComponent = true;
     this.showError = false;
     this.showRetryButton = false;
-    this.message = MESSAGES.loadingMessage;
+    this.message = 'Cargando información, por favor espere...';
   }
 
   /**

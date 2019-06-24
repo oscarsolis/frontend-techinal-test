@@ -1,4 +1,6 @@
-<div class="row flex-end">
+<app-loading #loading (retry)="getProducts()"></app-loading>
+
+<div class="row flex-end" *ngIf="!loading.isVisible()">
   <div class="col-md-4">
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Buscar producto" [(ngModel)]="filtersTerm.key">
@@ -21,81 +23,66 @@
 
 <div class="row">
   <div class="col-md-2">
-    <div id="accordion" class="border-primary border">
+    <div class="border-primary border">
       <div class="card">
-        <div class="card-header">
-          Filtros
+        <div class="card-header text-center">
+          <strong>Filtros</strong>
         </div>
       </div>
       <div class="card">
         <div class="card-header" id="headingAvailable">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-              aria-controls="collapseOne">
-              Disponibilidad
-            </button>
-          </h5>
+          <h6 class="mb-0">
+            Disponibilidad
+          </h6>
         </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingAvailable" data-parent="#accordion">
-          <div class="card-body">
-            <div class="custom-control custom-radio">
-              <input type="radio" id="availableTrue" name="available" class="custom-control-input"
-                [(ngModel)]="filtersTerm.available" value="true">
-              <label class="custom-control-label" for="availableTrue">Disponible</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="availableFalse" name="available" class="custom-control-input"
-                [(ngModel)]="filtersTerm.available" value="false">
-              <label class="custom-control-label" for="availableFalse">Agotado</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="availableAll" name="available" class="custom-control-input"
-                [(ngModel)]="filtersTerm.available" value="">
-              <label class="custom-control-label" for="availableAll">Todos</label>
-            </div>
+        <div class="card-body">
+          <div class="custom-control custom-radio">
+            <input type="radio" id="availableTrue" name="available" class="custom-control-input"
+              [(ngModel)]="filtersTerm.available" value="true">
+            <label class="custom-control-label" for="availableTrue">Disponible</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="availableFalse" name="available" class="custom-control-input"
+              [(ngModel)]="filtersTerm.available" value="false">
+            <label class="custom-control-label" for="availableFalse">Agotado</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="availableAll" name="available" class="custom-control-input"
+              [(ngModel)]="filtersTerm.available" value="">
+            <label class="custom-control-label" for="availableAll">Todos</label>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-header" id="headingPrice">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-              aria-expanded="false" aria-controls="collapseTwo">
-              Precio
-            </button>
-          </h5>
+          <h6 class="mb-0">
+            Precio
+          </h6>
         </div>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingPrice" data-parent="#accordion">
-          <div class="card-body">
-            <div class="form-group">
-              <label for="priceMin">Desde</label>
-              <input type="text" class="form-control" id="priceMin" placeholder="$0.00" mask="0*.00"
-                [(ngModel)]="filtersTerm.price.min">
-            </div>
-            <div class="form-group">
-              <label for="priceMax">Hasta</label>
-              <input type="text" class="form-control" id="priceMax" placeholder="$0.00" mask="0*.00"
-                [(ngModel)]="filtersTerm.price.max">
-            </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="priceMin">Desde</label>
+            <input type="text" class="form-control" id="priceMin" placeholder="$0.00" mask="0*.00"
+              [(ngModel)]="filtersTerm.price.min">
+          </div>
+          <div class="form-group">
+            <label for="priceMax">Hasta</label>
+            <input type="text" class="form-control" id="priceMax" placeholder="$0.00" mask="0*.00"
+              [(ngModel)]="filtersTerm.price.max">
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-header" id="headingThree">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-              aria-expanded="false" aria-controls="collapseThree">
-              Cantidad
-            </button>
-          </h5>
+          <h6 class="mb-0">
+            Cantidad
+          </h6>
         </div>
-        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
-          <div class="card-body">
-            <div class="form-group">
-              <label for="quantity">Cantidad a comprar</label>
-              <input type="text" class="form-control" mask="0*" id="quantity" placeholder="Ingrese la minima cantidad comprar"
-                [(ngModel)]="filtersTerm.quantity">
-            </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="quantity">Cantidad a comprar</label>
+            <input type="text" class="form-control" mask="0*" id="quantity"
+              placeholder="Ingrese la minima cantidad comprar" [(ngModel)]="filtersTerm.quantity">
           </div>
         </div>
       </div>

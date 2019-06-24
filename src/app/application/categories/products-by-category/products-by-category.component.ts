@@ -1,11 +1,18 @@
 // core
-import { Component } from '@angular/core';
+import {
+  ViewChild,
+  Component
+} from '@angular/core';
 
 // services
 import { ProductsService } from '@core/services';
 
 // routing
 import { ActivatedRoute } from '@angular/router';
+
+// components
+import { LoadingComponent } from '@shared/components';
+import { isDefined } from '@core/utils';
 
 @Component({
   selector: 'app-products-by-category',
@@ -70,6 +77,9 @@ export class ProductsByCategoryComponent {
   //
   sort: any = {};
 
+  //
+  @ViewChild('loading') loadingComponent: LoadingComponent;
+
   constructor(
     private activedRoute: ActivatedRoute,
     private _productsService: ProductsService
@@ -85,11 +95,19 @@ export class ProductsByCategoryComponent {
     this.activedRoute
       .paramMap
       .subscribe(params => {
+        if (isDefined(this.loadingComponent)) {
+          this.loadingComponent.show();
+        }
         const categoryId = params.get('id');
         this._productsService
           .getProductsByCategory(Number(categoryId))
-          .then(data => this.products = data)
-          .catch(error => { });
+          .then(data => {
+            this.products = data;
+            this.loadingComponent.hide();
+          })
+          .catch(error => {
+            this.loadingComponent.showMessageError('Algo salio mal, intente nuevamente', true);
+          });
       });
   }
 

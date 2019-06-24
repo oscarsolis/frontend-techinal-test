@@ -31,22 +31,24 @@ export class ProductsService {
    */
   getProductsByCategory(categoryId: number): Promise<Array<Product>> {
     return new Promise((resolve, reject) => {
-      this._http.get(ENDPOINTS.products)
-        .toPromise()
-        .then((result: any) => {
-          let products: Array<any> = result.products.filter(product => Number(product.sublevel_id) === Number(categoryId));
-          const productsInCart: Array<any> = this._cartService.getProductsFromCart();
-          products = products.map(product => {
-            product.selected = false;
-            const _product = productsInCart.find(p => p.id === product.id);
-            if (_product) {
-              product.selected = true;
-            }
-            return product;
-          });
-          resolve(this.mapArray(products));
-        })
-        .catch(errror => reject(errror));
+      setTimeout(() => {
+        this._http.get(ENDPOINTS.products)
+          .toPromise()
+          .then((result: any) => {
+            let products: Array<any> = result.products.filter(product => Number(product.sublevel_id) === Number(categoryId));
+            const productsInCart: Array<any> = this._cartService.getProductsFromCart();
+            products = products.map(product => {
+              product.selected = false;
+              const _product = productsInCart.find(p => p.id === product.id);
+              if (_product) {
+                product.selected = true;
+              }
+              return product;
+            });
+            resolve(this.mapArray(products));
+          })
+          .catch(errror => reject(errror));
+      }, TIMEOUT_TIME_IN_SECONDS);
     });
   }
 
@@ -60,7 +62,6 @@ export class ProductsService {
         .then((result: any) => {
           let products: Array<any> = result.products.filter(product => product.available);
           products = products.slice(0, 10);
-
           resolve(this.mapArray(products));
         })
         .catch(errror => reject(errror));
